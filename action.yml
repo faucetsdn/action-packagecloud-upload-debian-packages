@@ -1,0 +1,22 @@
+name: "Upload debian packages to packagecloud"
+description: "Upload and publish debian packages to packagecloud"
+branding:
+  icon: 'upload'
+  color: 'gray-dark'
+inputs:
+  path:
+    description: "Source path of directory full of packages to upload"
+    required: true
+  repo:
+    description: "Packagecloud repository name"
+    required: true
+  token:
+    description: "Packagecloud token"
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.path }}
+    - ${{ inputs.repo }}
+    - ${{ inputs.token }}
