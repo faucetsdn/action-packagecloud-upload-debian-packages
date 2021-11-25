@@ -50,7 +50,7 @@ do
         # Upload just this specific version of debian or ubuntu
         IFS=_ read -r distro release <<< "$(basename "${path}")"
 
-        packagecloud_upload "${release}" "${path}/*.deb"
+        packagecloud_upload "${distro}/${release}" "${path}/*.deb"
     fi
 done <   <(find "${PACKAGE_LOCATION}" -mindepth 1 -maxdepth 1 -type d -print0)
 
