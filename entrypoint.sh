@@ -42,7 +42,7 @@ do
 
         for release in $(awk -F ',' -v today="$(date --utc "+%F")" \
             'BEGIN {OFS=","} NR>1 { if (($6 == "" || $6 >= today) && ($4 != "" && $4 <= today)) print $3 }' \
-            "${git_tmp_dir}/debian.csv" | grep -v -E "(sid|experimental)"); do
+            "${git_tmp_dir}/debian.csv" | grep -v -E "(buster|sid|experimental)"); do
             packagecloud_upload "debian/${release}" "${path}/*.deb"
             packagecloud_upload "raspbian/${release}" "${path}/*.deb"
         done
