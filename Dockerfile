@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:noble
 
 RUN apt-get update && apt-get -y install curl git build-essential ruby ruby-dev
 
